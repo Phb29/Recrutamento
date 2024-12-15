@@ -9,11 +9,13 @@ com comando:  mvn clean package -DskipTests
 
 essa etapa de rodar o comando mvn clean package -DskipTests  é so para garantir  q não de erro ao construir a aplicação do docker
 logo depois 
-Suba os containers com Docker Compose:
+Suba os containers com:
 
 docker-compose up --build
 
 Isso irá garantir que o Docker construa e execute a aplicação sem erros.
+
+ usado no back end Apache Maven 3.9.9  e  Java version: 17.0.13
 
 🎨 Frontend
 Para rodar o frontend, siga os passos abaixo:

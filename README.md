@@ -27,9 +27,11 @@ Certifique-se de ter instalado as seguintes versões de ferramentas:
 
 Angular CLI: 8.3.29
 Node.js: 10.13.0
+
 Após a instalação das dependências, rode o projeto com:
 
 ng serve -o
+
 O comando acima irá iniciar a aplicação Angular e abrir a aplicação no navegador.
 
 💡 Sobre o Projeto

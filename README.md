@@ -27,7 +27,7 @@ npm install
 
 Certifique-se de ter instalado as seguintes versões de ferramentas:
 
-Angular CLI: 8.3.29
+Angular CLI: 8.3.29 e 
 Node.js: 10.13.0
 
 Após a instalação das dependências, rode o projeto com:

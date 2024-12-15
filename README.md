@@ -40,7 +40,7 @@ O projeto é um sistema de Recrutamento Interno que permite gerenciar candidatos
 👤 Login
 Ao acessar a página inicial, você pode escolher entre dois tipos de login:
 
-Recrutador
+Recrutador ou
 Candidato
 Caso não tenha uma conta, você poderá criar um novo login.
 

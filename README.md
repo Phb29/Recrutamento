@@ -10,7 +10,9 @@ com comando:  mvn clean package -DskipTests
 essa etapa de rodar o comando mvn clean package -DskipTests  é so para garantir  q não de erro ao construir a aplicação do docker
 logo depois 
 Suba os containers com Docker Compose:
+
 docker-compose up --build
+
 Isso irá garantir que o Docker construa e execute a aplicação sem erros.
 
 🎨 Frontend

@@ -1,0 +1,31 @@
+<div class="body">
+
+  <mat-card class="container mat-elevation-z8">
+    <div class="titulo">
+      <h1 mat-typography class="font-title">
+        Recrutamento <span class="highlight">Interno</span>
+      </h1>
+    </div>
+
+
+    <div class="blocks">
+
+      <mat-card class="conteiner-child" (click)="goToLoginPage('candidate')">
+        <div class="content">
+          <img src="../../../assets/candidato.png" alt="Candidato" class="img-formater" />
+          <span class="v-font-sub-title-image">Candidato</span>
+        </div>
+      </mat-card>
+
+
+      <mat-card class="conteiner-child" (click)="goToLoginPage('recruiter')">
+        <div class="content">
+          <img src="../../../assets/recrutador.png" alt="Recrutador" class="img-formater" />
+          <span class="v-font-sub-title-image">Recrutador</span>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>
+
+

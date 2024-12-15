@@ -1,0 +1,136 @@
+/* Container Geral */
+.mat-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.mat-sidenav-container {
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.mat-sidebar {
+  background-color: #3f51b5;
+  color: white;
+  padding: 10px;
+}
+
+.mat-sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mat-avatar-img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.mat-header-title {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.mat-header-email {
+  font-size: 0.9rem;
+  color: #d1d1d1;
+}
+
+/* Conteúdo Principal */
+.mat-content {
+  background-color: #f9f9f9;
+  padding: 20px;
+  min-height: calc(100vh - 20px); /* Garante altura mínima */
+}
+
+.mat-section {
+  margin-bottom: 20px;
+}
+
+.mat-title {
+  font-size: 1.6rem;
+  color: #3f51b5;
+}
+
+mat-card {
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Botão de Lista Ativo */
+.mat-active {
+  background-color: #303f9f;
+  border-radius: 4px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mat-sidenav {
+    width: 200px;
+  }
+
+  .mat-content {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mat-sidenav {
+    width: 150px;
+  }
+
+  .mat-header-title {
+    font-size: 1rem;
+  }
+
+  .mat-title {
+    font-size: 1.2rem;
+  }
+  p-toast {
+    position: fixed !important;
+    top: 5%;
+    left: 50%;
+    z-index: 1000;
+    color: red;
+    text-align: center;
+  }
+
+  .notificacao-container {
+    position: fixed; /* Fixa o elemento no topo */
+    top: 15px;       /* Distância do topo */
+    right: 20px;     /* Distância da direita */
+    z-index: 2000;   /* Garante que fique acima de outros elementos */
+    cursor: pointer;
+
+    .notificacao-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      z-index: 2;
+    }
+
+    /* Animação do sininho */
+    .animar {
+      animation: piscar 1s infinite alternate;
+    }
+
+    @keyframes piscar {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

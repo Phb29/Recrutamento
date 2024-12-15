@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.p-toast {
+  top: 10px !important; /* Distância do topo */
+  left: 50% !important; /* Centraliza horizontalmente */
+  transform: translateX(-50%) !important; /* Ajusta centralização */
+  z-index: 9999 !important; /* Garante que fica acima de outros elementos */
+  position: fixed !important; /* Garante a posição fixa */
+  background-color: #f44336 !important; /* Fundo vermelho */
+  color: #f44336  !important;
+}
+
+/* Estilizar mensagens de erro */
+.p-toast .p-toast-message-error {
+  background-color: #f44336 !important; /* Fundo vermelho */
+  color: #f44336  !important; /* Texto branco */
+  font-weight: bold !important; /* Negrito */
+  border-radius: 8px !important; /* Bordas arredondadas */
+  padding: 10px 16px !important; /* Espaçamento interno */
+  max-width: 400px !important; /* Largura máxima */
+}

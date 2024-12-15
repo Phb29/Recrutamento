@@ -1,0 +1,87 @@
+<body>
+<p-toast position="top-center" ></p-toast>
+<div class="session">
+  <mat-card class="card" *ngIf="!newUser">
+    <div class="v-header">
+      <h2>Bem-vindo</h2>
+      <p>
+        <span class="highlight">
+          {{ credencial.tipoUsuario === 'recruiter' ? 'Recrutador' : 'Candidato' }}
+        </span>
+        faça login na sua conta
+      </p>
+    </div>
+
+    <form>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Digite seu usuário" [(ngModel)]="credencial.login" name="username">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Digite sua senha" [(ngModel)]="credencial.senha" type="password" name="password">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="button" (click)="login()">Entrar</button>
+      <button mat-button color="accent" (click)="changeNewUser()" type="button">Criar conta</button>
+    </form>
+  </mat-card>
+
+  <mat-card class="card" *ngIf="newUser">
+    <div class="header">
+      <h2>Criar Conta</h2>
+      <p>Preencha os campos abaixo:</p>
+    </div>
+
+    <form [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nome Completo</mat-label>
+        <input matInput placeholder="Digite seu nome" formControlName="nome">
+        <mat-error *ngIf="newUserForm.get('nome').invalid && newUserForm.get('nome').touched">
+          <span *ngIf="newUserForm.get('nome').errors.required">• Nome é obrigatório.</span>
+          <span *ngIf="newUserForm.get('nome').errors.minlength">• Mínimo 10 caracteres.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Digite seu usuário" formControlName="login">
+        <mat-error *ngIf="newUserForm.get('login').invalid && newUserForm.get('login').touched">
+          <span *ngIf="newUserForm.get('login').errors.required">• Usuário é obrigatório.</span>
+          <span *ngIf="newUserForm.get('login').errors.minlength">• Mínimo 5 caracteres.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="Digite seu e-mail" formControlName="email" type="email">
+        <mat-error *ngIf="newUserForm.get('email').invalid && newUserForm.get('email').touched">
+          <span *ngIf="newUserForm.get('email').errors.required">• E-mail é obrigatório.</span>
+          <span *ngIf="newUserForm.get('email').errors.email">• Formato inválido.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Digite sua senha" formControlName="newPassword" type="password">
+        <mat-error *ngIf="newUserForm.get('newPassword').invalid && newUserForm.get('newPassword').touched">
+          • Senha é obrigatória.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Confirme a Senha</mat-label>
+        <input matInput placeholder="Confirme sua senha" formControlName="checkNewPassword" type="password">
+        <mat-error *ngIf="newUserForm.hasError('mismatch')">
+          • As senhas não coincidem.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="button" type="submit" [disabled]="newUserForm.invalid">
+        Criar conta
+      </button>
+      <button mat-button color="accent" (click)="changeNewUser()" type="button">Voltar ao login</button>
+    </form>
+  </mat-card>
+</div>
+</body>

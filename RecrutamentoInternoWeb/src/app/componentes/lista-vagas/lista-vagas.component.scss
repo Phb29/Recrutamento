@@ -1,0 +1,19 @@
+.mat-vagas-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Um card por linha inicialmente */
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+mat-card-content p {
+  white-space: normal; /* Permite que o texto quebre em várias linhas */
+  overflow: visible; /* Exibe todo o texto */
+  word-break: break-word; /* Quebra palavras muito longas */
+}
+mat-card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease-in-out;
+  word-wrap: break-word; /* Quebra automaticamente palavras longas */
+}

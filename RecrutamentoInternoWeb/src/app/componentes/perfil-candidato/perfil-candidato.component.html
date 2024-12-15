@@ -1,0 +1,48 @@
+<body>
+<p-toast position="top-center" ></p-toast>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="user-heading">
+      <h3 style="color:black"> Olá {{ usuario.nome}}</h3>
+    </div>
+    <mat-nav-list>
+      <mat-list-item (click)="mostrarPainel('visaoGeral')" [ngClass]="{'active': mostrarVisaoGeral}">
+        <mat-icon>home</mat-icon>
+        <span>Painel Principal</span>
+      </mat-list-item>
+      <mat-list-item (click)="mostrarPainel('meuPerfil')" [ngClass]="{'active': mostrarMeuPerfil}">
+        <mat-icon>person</mat-icon>
+        <span>Usuário</span>
+      </mat-list-item>
+      <mat-list-item (click)="mostrarPainel('listarVagas')" [ngClass]="{'active': mostrarListarVagas}">
+        <mat-icon>folder</mat-icon>
+        <span>Vagas Disponíveis</span>
+      </mat-list-item>
+      <mat-list-item (click)="sair()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sair</span>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <div *ngIf="mostrarVisaoGeral || mostrarMeuPerfil" class="profile-section">
+      <h1 class="section-title">Candidato</h1>
+      <div class="profile-details">
+        <p><strong>Nome:</strong> {{ usuario?.nome}}</p>
+        <p><strong> Usuário:</strong> {{ usuario?.login}}</p>
+        <p><strong>E-mail:</strong> {{ usuario?.email}}</p>
+        <p><strong>Genêro:</strong> {{ usuario?.sexo == 'M' ? 'Masculino' : 'Feminino' }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="mostrarVisaoGeral || mostrarListarVagas" class="vagas-section">
+      <h1 class="section-title">Vagas Disponíveis</h1>
+      <app-lista-vagas-candidato [idUsuario]="usuario.id" (editarVagaEvent)="editarVaga($event)">
+      </app-lista-vagas-candidato>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+</body>

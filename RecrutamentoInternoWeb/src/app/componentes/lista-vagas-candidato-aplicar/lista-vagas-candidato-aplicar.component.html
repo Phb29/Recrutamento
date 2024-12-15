@@ -1,0 +1,21 @@
+<div class="candidatos-container">
+  <ng-container *ngIf="vagas.length > 0; else noCandidatos">
+    <div class="candidatos-list">
+      <mat-card class="candidato-card" *ngFor="let vaga of vagas; let i = index">
+        <mat-card-header>
+          <mat-card-title>{{ 'Nome: ' + vaga.nomeCandidato || 'Candidato ' + i }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Email:</strong> {{ vaga.emailCandidato || 'Email ' + i }}</p>
+          <p><strong>Vaga Aplicada:</strong> {{ vaga.tituloVaga || 'Título ' + i }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <ng-template #noCandidatos>
+    <div class="no-candidatos">
+      <h3>Nenhum Candidato Registrado</h3>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,97 @@
+<body>
+<div class="mat-container">
+  <mat-sidenav-container class="mat-sidenav-container">
+    <mat-sidenav mode="side" opened class="mat-sidebar">
+      <div class="notificacao-container" (click)="abrirNotificacoes()">
+        <mat-icon style="cursor: pointer" [class.animar]="temNotificacaoNaoLida()">notifications</mat-icon>
+        <span *ngIf="temNotificacaoNaoLida()" class="notificacao-badge">{{ notificacoes.length }}</span>
+      </div>
+      <div *ngIf="mostrarPainelNotificacoes" class="notificacao-painel">
+        <div class="notificacao-header">
+          <h3>Notificações</h3>
+          <button mat-icon-button (click)="fecharNotificacoes()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <ul class="notificacao-lista">
+          <li *ngFor="let notificacao of notificacoes">
+            <mat-icon>notifications</mat-icon>
+            <div class="notificacao-conteudo">
+              <span>{{ notificacao.mensagem }}</span>
+              <small>{{ notificacao.dataCriacao | date: 'dd/MM/yyyy HH:mm' }}</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <mat-nav-list>
+        <mat-list-item (click)="mostrarPainel('visaoGeral')" [class.mat-active]="mostrarVisaoGeral">
+          <mat-icon>home</mat-icon>
+          <span>Painel Principal</span>
+        </mat-list-item>
+        <mat-list-item (click)="mostrarPainel('meuPerfil')" [class.mat-active]="mostrarMeuPerfil">
+          <mat-icon>person</mat-icon>
+          <span>Usuario</span>
+        </mat-list-item>
+        <mat-list-item (click)="mostrarPainel('cadastrarVagas')" [class.mat-active]="mostrarCadastrarVagas">
+          <mat-icon>create</mat-icon>
+          <span>Cadastrar/Editar Vagas</span>
+        </mat-list-item>
+        <mat-list-item (click)="mostrarPainel('listarVagas')" [class.mat-active]="mostrarListarVagas">
+          <mat-icon>work</mat-icon>
+          <span>Vagas</span>
+        </mat-list-item>
+        <mat-list-item (click)="mostrarPainel('mostrarCandidatos')" [class.mat-active]="mostrarCandidatos">
+          <mat-icon>supervisor_account</mat-icon>
+          <span>Candidaturas</span>
+        </mat-list-item>
+        <mat-list-item (click)="sair()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Sair</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content class="mat-content">
+      <div *ngIf="mostrarVisaoGeral || mostrarMeuPerfil" class="mat-section">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class="mat-title"> Recrutador</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p><strong>Nome:</strong> {{ usuario?.nome  }}</p>
+            <p><strong>Usuário:</strong> {{ usuario?.login  }}</p>
+            <p><strong>E-mail:</strong> {{ usuario?.email  }}</p>
+            <p><strong>Genêro:</strong> {{ usuario?.sexo == 'M' ? 'Masculino' : 'Feminino' }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <h3 *ngIf="mostrarVisaoGeral || mostrarListarVagas" class="mat-title">Vagas</h3>
+      <app-lista-vagas
+        *ngIf="mostrarVisaoGeral || mostrarListarVagas"
+        (editarVagaEvent)="editarVaga($event)">
+      </app-lista-vagas>
+
+      <div *ngIf="mostrarVisaoGeral || mostrarCandidatos" class="mat-section">
+        <h3 class="mat-title">Candidaturas</h3>
+        <app-lista-vagas-candidato-aplicar
+          *ngIf="usuario && usuario.id"
+          (editarVagaEvent)="editarVaga($event)">
+        </app-lista-vagas-candidato-aplicar>
+      </div>
+
+      <div *ngIf="mostrarCadastrarVagas" class="mat-section">
+        <app-formulario-vagas
+          (showMessage)="showMessage($event)"
+          [vagaSelecionada]="vagaSelecionada"
+          [novaVaga]="novaVaga">
+        </app-formulario-vagas>
+      </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<p-toast position="top-center"></p-toast>
+</body>

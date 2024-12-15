@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: RecrutamentoInterno
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  spring-app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/RecrutamentoInterno
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres

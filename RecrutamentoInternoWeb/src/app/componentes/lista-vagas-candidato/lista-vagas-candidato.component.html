@@ -1,0 +1,31 @@
+<div class="vagas-container">
+  <ng-container *ngIf="vagas.length > 0; else noVagas">
+    <div class="vagas-grid">
+      <mat-card *ngFor="let vaga of vagas; let i = index" class="vaga-card">
+        <mat-card-header>
+          <div mat-card-avatar class="vaga-avatar">
+            <mat-icon class="vaga-icon" [ngClass]="getIconClass(i)">work</mat-icon>
+          </div>
+          <mat-card-title>{{ 'Vaga ' + vaga.id || 'Vaga ' + i }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>Título:</strong> {{ vaga.titulo || 'Título ' + i }}</p>
+          <p><strong>Descrição:</strong> {{ vaga.descricao || 'Descrição ' + i }}</p>
+          <p><strong>Requisitos:</strong> {{ vaga.requisitos || 'Requisitos ' + i }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="sendApply(vaga.id)">Aplicar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <ng-template #noVagas>
+    <div class="vagas-empty">
+      <mat-icon>info</mat-icon>
+      <h3>Nenhuma vaga Registrada</h3>
+    </div>
+  </ng-template>
+</div>

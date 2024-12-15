@@ -1,0 +1,38 @@
+<div class="">
+  <div *ngIf="vagas.length > 0; else noVagas" class="mat-vagas-grid">
+    <div *ngFor="let vaga of vagas; let i = index" class="mat-vaga-card">
+      <mat-card class="mat-card-vaga">
+        <mat-card-header>
+          <div mat-card-avatar class="mat-vaga-icon">
+            <mat-icon class="mat-icon-large" color="primary">work</mat-icon>
+          </div>
+          <mat-card-title class="mat-vaga-title"
+                         >
+            {{ 'Vaga ' + vaga.id || 'Vaga ' + i }}
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>Título:</strong> {{ vaga.titulo || 'Título ' + i }}</p>
+          <p class="truncate-description"><strong>Descrição:</strong> {{ vaga.descricao || 'Descrição ' + i }}</p>
+          <p><strong>Requisitos:</strong> {{ vaga.requisitos || 'Requisitos ' + i }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="editarVaga(vaga)">
+            Editar
+          </button>
+          <button mat-raised-button color="warn" (click)="excluirVaga(vaga.id)">
+            Excluir
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <ng-template #noVagas>
+    <div class="mat-no-vagas">
+      <h3>Nenhuma Vaga Registrada</h3>
+    </div>
+  </ng-template>
+</div>
